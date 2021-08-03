@@ -1,9 +1,13 @@
-<%= form_for(@task) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :details %>
-  <%= f.text_field :details %>
-  <%= f.label :completed %>
-  <%= f.number_field :completed %>
-  <%= f.submit %>
+<h1>Tasks</h1>
+
+<% @tasks.each do |task| %>
+<li><%= link_to task.title, task_path(task) %></li>
+<%= link_to "Delete #{task.title}", 
+  destroy_task_path(task),
+  method: :delete %>
 <% end %>
+
+<p><%= link_to "Add task", new_task_path %></p>
+
+<%# <i class="far fa-check- square"></i> %>
+<%# <%= link_to "DELETE", tasks_path %>
